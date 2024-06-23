@@ -18,6 +18,19 @@
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
   }
+  .tax-info {
+      display:none;
+    }
+
+  .tax-toggle {
+      border: 1px solid black;
+      border-radius: 1rem;
+      height: 3.25rem;
+      padding: 1rem;
+      margin-left: 5rem; 
+      display: flex;
+      align-items: center;
+    }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -41,6 +54,12 @@
               <i class="fa-solid fa-magnifying-glass"></i>Search
             </button>
           </form>
+        </div>
+        <div class="tax-toggle">
+          <div class="form-check-reverse form-switch">
+           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+           <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+          </div>
         </div>
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Airbnb your home</a>
