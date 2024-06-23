@@ -109,7 +109,7 @@
 .starability-slot > label {
   position: relative;
   display: inline-block;
-  float: none;
+  float: left;
   width: 30px;
   height: 30px;
   font-size: 0.1em;
@@ -184,8 +184,7 @@
     color: inherit;
     background: none;
   }
-  .starability-slot > label::before,
-  .starability-slot > label::after {
+  .starability-slot > label::before, .starability-slot > label::after {
     display: none;
   }
 }
