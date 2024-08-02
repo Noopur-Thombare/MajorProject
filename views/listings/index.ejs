@@ -1,0 +1,64 @@
+<% layout("/layouts/boilerplate") %> 
+
+
+<form action="/listings/search" method="GET" class="d-flex mb-3">
+  <input 
+      type="text" 
+      name="query" 
+      class="form-control me-2" 
+      placeholder="Search listings" 
+      aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<div class="listings">
+  <% if (listings.length > 0) { %>
+      <% listings.forEach(listing => { %>
+          <div class="listing-card">
+              <h3><%= listing.title %></h3>
+              <p><%= listing.description %></p>
+              <p>Price: &#8377; <%= listing.price.toLocaleString("en-IN") %></p>
+          </div>
+      <% }); %>
+  <% } else { %>
+      <p>No listings found.</p>
+  <% } %>
+</div>
+
+
+    
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% for (let listing of allListings) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+    <div class="card col listing-card" >
+        <img 
+        src="<%= listing.image.url %>" 
+        class="card-img-top" 
+        alt="listing_image" 
+        style="height: 20rem">
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b><br>
+            &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+            <i class="tax-info"> &nbsp; +18% GST</i>
+          </p>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click",() => {
+  let taxInfo = document.getElementsByClassName("tax-info");
+  for (info of taxInfo) {
+      if(info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+  }
+  });
+</script>
+    
+
