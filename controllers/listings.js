@@ -1,9 +1,24 @@
 const Listing = require("../models/listing");
 
-module.exports.index = async (req,res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
+module.exports.index = async (req, res) => {
+  const { search } = req.query;
+  let allListings;
+
+  if (search) {
+    allListings = await Listing.find({
+      $or: [
+        { title: { $regex: search, $options: "i" } },
+        { location: { $regex: search, $options: "i" } },
+        { country: { $regex: search, $options: "i" } }
+      ]
+    });
+  } else {
+    allListings = await Listing.find({});
+  }
+
+  res.render("listings/index", { allListings });
 };
+
 
 module.exports.renderNewForm = (req,res) => { 
     res.render("listings/new.ejs");
@@ -19,9 +34,9 @@ module.exports.showListing = async (req,res) => {
         },
     })
     .populate("owner");
-    if(!listing) {
-        req.flash("error","Listing you requested for does not exist");
-        res.redirect("listings");
+    if (!listing) {
+        req.flash("error", "Listing you requested for does not exist");
+        return res.redirect("/listings");
     }
     console.log(listing);
     res.render("listings/show.ejs", { listing });
