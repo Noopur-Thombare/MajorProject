@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %> 
 
-    <% if (allListings.length === 0) { %>
+<% if (allListings.length === 0) { %>
   <div class="alert alert-warning text-center mt-4">
     No results found<% if (search) { %> for "<%= search %>" <% } %>
   </div>
@@ -9,7 +9,15 @@
     <% for (let listing of allListings) { %>
       <a href="/listings/<%= listing._id %>" class="listing-link">
         <div class="card col listing-card">
-          <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem">
+          <img 
+            src="<%= listing.image.url %>" 
+            class="card-img-top" 
+            style="height: 20rem"
+          >
+          
+          <!-- Overlay for hover effect -->
+          <div class="card-img-overlay"></div>
+
           <div class="card-body">
             <p class="card-text">
               <b><%= listing.title %></b><br>
@@ -22,22 +30,12 @@
   </div>
 <% } %>
 
-</div>
-
 <script>
   let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-  taxSwitch.addEventListener("click",() => {
-  let taxInfo = document.getElementsByClassName("tax-info");
-  for (info of taxInfo) {
-      if(info.style.display != "inline") {
-        info.style.display = "inline";
-      } else {
-        info.style.display = "none";
-      }
-  }
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      info.style.display = info.style.display !== "inline" ? "inline" : "none";
+    }
   });
 </script>
-    
-
-
-
