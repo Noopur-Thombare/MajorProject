@@ -16,7 +16,7 @@ body {
 }
 
 .navbar-collapse {
-  background-color: #ffffff; 
+  background-color: #ffffff !important; 
 }
 
 .fa-compass {
