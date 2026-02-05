@@ -28,6 +28,12 @@ body {
     color: #222222 !important;
 }
 
+.tag-badge {
+  font-size: 1rem;   
+  padding: 0.45em 0.7em;
+  border-radius: 12px;
+}
+
 /* Footer */
 /* .f-info-links a {
     text-decoration: none;
