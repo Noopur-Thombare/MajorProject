@@ -29,9 +29,11 @@ body {
 }
 
 .tag-badge {
-  font-size: 1rem;   
-  padding: 0.45em 0.7em;
-  border-radius: 12px;
+  font-size: 1.5rem;         
+  font-weight: 500;         
+  padding: 0.5em 0.8em;
+  border-radius: 10px;
+  line-height: 1.2;
 }
 
 /* Footer */
