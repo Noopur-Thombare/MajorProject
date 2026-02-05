@@ -28,12 +28,8 @@ body {
     color: #222222 !important;
 }
 
-.tag-badge {
-  font-size: 1.5rem;         
-  font-weight: 500;         
-  padding: 0.5em 0.8em;
-  border-radius: 10px;
-  line-height: 1.2;
+.badge {
+  font-size: 0.95rem !important;         
 }
 
 /* Footer */
