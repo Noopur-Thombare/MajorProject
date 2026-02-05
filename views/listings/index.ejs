@@ -9,6 +9,7 @@
     <% for (let listing of allListings) { %>
       <a href="/listings/<%= listing._id %>" class="listing-link">
         <div class="card col listing-card">
+          
           <img 
             src="<%= listing.image.url %>" 
             class="card-img-top" 
@@ -24,6 +25,18 @@
               ₹<%= listing.price.toLocaleString("en-IN") %> / night
               <span class="tax-info"> +18% GST</span>
             </p>
+
+      
+            <% if (listing.tags && listing.tags.length > 0) { %>
+              <div class="mt-1">
+                <% listing.tags.forEach(tag => { %>
+                  <span class="badge bg-light text-dark border me-1 mb-1">
+                    <%= tag %>
+                  </span>
+                <% }) %>
+              </div>
+            <% } %>
+
           </div>
         </div>
       </a>
