@@ -15,6 +15,10 @@ const listingSchema = new Schema({
     price: Number,
     location: String,
     country: String,
+    tags: {
+        type: [String],
+        default: [],
+    },
     reviews: [
       {
         type: Schema.Types.ObjectId,
@@ -29,9 +33,10 @@ const listingSchema = new Schema({
 
 listingSchema.post("findOneAndDelete",async (listing) => {
   if(listing) {
-  await Review.deleteMany({review : {$in: listing.reviews}});
+  await Review.deleteMany({ _id: { $in: listing.reviews } });
 }
 });
 
 const Listing = mongoose.model("Listing",listingSchema);
+
 module.exports = Listing;
