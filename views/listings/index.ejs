@@ -30,7 +30,7 @@
             <% if (listing.tags && listing.tags.length > 0) { %>
               <div class="mt-1">
                 <% listing.tags.forEach(tag => { %>
-                  <span class="badge bg-light text-dark border me-1 mb-1">
+                  <span class="badge tag-badge bg-light text-dark border me-1 mb-1">
                     <%= tag %>
                   </span>
                 <% }) %>
@@ -53,4 +53,5 @@
     }
   });
 </script>
+
 
